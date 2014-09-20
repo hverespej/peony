@@ -1,5 +1,14 @@
 $( document ).ready(function() {
     console.log( "ready!" );
+    $('.check').click(function(){
+      if ($(this).is(':checked')){
+        $(this).next('.qty').toggleClass('hide');
+        console.log('test');
+      }
+      else{
+        $(this).next('.qty').toggleClass('hide');
+      }
+    }); 
 });
 
 function initialize() {
