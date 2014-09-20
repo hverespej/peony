@@ -8,11 +8,15 @@ function initialize() {
             var map = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
 
-            var marker = new google.maps.Marker({
-                  position: myLatlng,
-                  map: map,
-                  title: 'Hello World!'
-            });
+            marker.setMap(null);
+            // var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
+
+            // var marker = new google.maps.Marker({
+            //       position: myLatlng,
+            //       map: map,
+            //       title: 'Hello World!'
+            //       // icon: iconBase;
+            // });
 
             google.maps.event.addListener(map, 'center_changed', function() {
                 // 0.1 seconds after the center of the map has changed,
