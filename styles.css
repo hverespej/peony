@@ -1,0 +1,27 @@
+/*bootstrap import*/
+@import url ('bootstrap.min.css');
+/*@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css');*/
+
+html { 
+	height: 100%; 
+}
+body {
+	height: 100%; 
+	margin: 0; padding: 0 
+}
+
+#map-canvas { 
+	height: 100%;
+}
+.heading{
+	position: absolute;
+	top: 20px;
+	width: 100%;
+	text-align: center;
+	z-index: 20;
+	background: white;
+	border-bottom: 1px solid #585858;
+}
+.btn-primary{
+	background-color: red;
+}
