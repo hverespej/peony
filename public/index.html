@@ -77,16 +77,31 @@
 				</div>
 				<div class='modal-body'>
 					<form action='https://docs.google.com/forms/d/145Ed-IX9JnI8oiByoKO_jfamH_4XRT2EyrEDMJ83KK4/formResponse'
-						method='POST' id='signup-form' target='hidden-frame'>
-						First Name <input type='text' name='entry.805299408' id='entry_805299408' placeholder='Jane'><br />
-						Last Name <input type='text' name='entry.179792778' id='entry_179792778' placeholder='Doe'><br />
-						Email Address <input type='text' name='entry.512051036' id='entry_512051036' placeholder='janedoe@example.com'><br />
-						[Optional] What interests you about this service?<br />
-						<textarea name='entry.2059151010' rows='8' cols='0' class='ss-q-long' id='entry_2059151010'></textarea>
+						method='POST' id='signup-form' target='hidden-frame'
+						style='font-size:15px;'>
+						<div class='form-item'>
+							First Name<br />
+							<input type='text' name='entry.805299408' id='entry_805299408' placeholder='Jane'><br />
+						</div>
+						<div class='form-item'>
+							Last Name<br />
+							<input type='text' name='entry.179792778' id='entry_179792778' placeholder='Doe'><br />
+						</div>
+						<div class='form-item'>
+							Email Address<br />
+							<input type='text' name='entry.512051036' id='entry_512051036' placeholder='janedoe@example.com'><br />
+						</div>
+						<div class='form-item' style='margin-bottom:0px;'>
+							[Optional] What interests you about this service?<br />
+							<textarea name='entry.2059151010' rows='2' class='ss-q-long' id='entry_2059151010'></textarea>
+						</div>
 						<input type='hidden' name='draftResponse' value='[,,&quot;-5309762947686053019&quot;]'>
 						<input type='hidden' name='pageHistory' value='0'>
 						<input type='hidden' name='fbzx' value='-5309762947686053019'><br />
-						<input type='submit' name='submit' value='Submit' id='ss-submit' class='btn btn-primary btn-lg' disabled>
+						<div style='text-align:center;'>
+							<input type='submit' name='submit' value='Submit' 
+								id='ss-submit' class='btn btn-primary btn-lg' style='width:100%;' disabled>
+						</div>
 					</form>
 					<div id='signup-complete' style='display:none'>
 						Thanks for signing up!
