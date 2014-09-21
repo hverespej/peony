@@ -16,7 +16,13 @@ body {
 
 .header {
 	text-align:center;
-	padding: 25px 10px 25px 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.header .logo {
+	width: 60%;
+	max-width: 150px;
 }
 
 .subheader{

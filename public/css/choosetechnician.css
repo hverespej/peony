@@ -12,6 +12,7 @@
 }
 .profile-entry > img {
 	width: 25%;
+	max-width: 150px;
 }
 .profile-entry > div {
 	display: inline-block;
