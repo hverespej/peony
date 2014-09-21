@@ -81,7 +81,7 @@ body.bg-pink-dots {
 	transform: translateY(-50%);
 }
 
-input[type=text], textarea {
+input[type=text], input[type=password], textarea {
 	border: none;
 	border: solid 1px #ccc;
 	border-radius: 7px;
