@@ -1,3 +1,10 @@
+/* Theme colors:
+ * pink: 251, 149, 126 => #fb957e
+ * brown: 180, 140, 115 => #b48c73
+ * mint: 161, 214, 188 => #a1d6bc
+ * grey: #58595b
+ */
+
 @font-face {
 	font-family: 'Maven';
 	src: url('../fonts/mavenprolight-300-webfont.woff');
@@ -7,17 +14,38 @@
 	src: url('../fonts/RobotoSlab-Regular.ttf');
 }
 
+html {
+	height: 100%;
+}
+
 body {
+	height: 100%;
 	margin: 0px;
 	padding: 0px;
 	font-family: 'roboto-slab';
 	background-color: white;
 }
 
+body.bg-green-dots {
+	background-image: url("../img/bg-green-dots-small.png");
+	background-repeat: true;
+}
+
+body.bg-grey-dots {
+	background-image: url("../img/bg-grey-dots-small.png");
+	background-repeat: true;
+}
+
+body.bg-pink-dots {
+	background-image: url("../img/bg-pink-dots-small.png");
+	background-repeat: true;
+}
+
 .header {
 	text-align:center;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	background-color: white;
 }
 
 .header .logo {
@@ -32,7 +60,7 @@ body {
 	padding: 5px 10px 5px 10px;
 }
 
-.menu{
+.menu {
 	background: url('../img/menu.png');
 	background-size: 45px;
 	background-repeat: no-repeat;
@@ -69,19 +97,20 @@ input[type=text], textarea {
 .option-label {
 	font-family: 'roboto-slab';
 	background-color: #a1d6bc;
+	border: 2px solid #58595b;
 	border-radius: 10px;
 	cursor: pointer;
 	overflow: hidden;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	font-size: 20px;
-	border: 2px solid #58595b;
 }
 
 .option-label-text {
 	display: inline-block;
 	margin-left: 10px;
 	margin-right: 10px;
+	color: #58595b;
 }
 
 .option-label-right-arrow {
@@ -91,5 +120,39 @@ input[type=text], textarea {
 	background-repeat: no-repeat;
 	background-position: 5px;
 	width: 21px;
+}
+
+.profile-list {
+	height: 100%;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.profile-list-header {
+	margin-bottom: 5px;
+	margin-left: 10px;
+	font-size: 20px;
+}
+
+.profile-entry {
+	border-top: 2px black solid;
+	padding: 8px;
+	clear: both;
+}
+
+.profile-entry > img {
+	float: left;
+	width: 25%;
+	max-width: 150px;
+	margin-right: 10px;
+	margin-bottom: 8px;
+}
+
+.profile-text {
+	margin-bottom: 10px;
+}
+
+.profile-text > strong {
+	font-size: 20px;
 }
 

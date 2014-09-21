@@ -1,14 +1,6 @@
-/* Theme colors:
- * pink: 251, 149, 126 => #fb957e
- * brown: 180, 140, 115 => #b48c73
- * mint: 161, 214, 188 => #a1d6bc
- * grey: #58595b
- */
-
 body {
 	font-size: 25px;
 }
-
 
 .content-panel {
 	margin: 0px;
