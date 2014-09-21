@@ -1,6 +1,118 @@
 <html>
-	<head></head>
-	<body>
-		Hello!
-	</body>
+<head>
+	<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1'>
+	<link rel='stylesheet' href='css/bootstrap.3.2.0.min.css'>
+	<link rel='stylesheet' href='css/index.css'>
+</head>
+<body>
+	<div class='top-panel'><img src='img/logo.png' /></div>
+	<div style='position:relative;'>
+		<div class='panel-1-image'></div>
+		<div class='panel-1-text-background' style='padding-right:5%;max-width:85%;'>
+			<div class='panel-text' style='padding-left:40px;'>
+				Jane loved getting mani-pedis
+			</div>
+		</div>
+	</div>
+	<div class='panel-white-background' style='color:#b48c73;'>
+		But she got tired of making her schedule work for her manicurist
+	</div>
+	<div class='panel-2-image'>
+		<div class='panel-2-text-background' style='padding-left:5%;max-width:85%'>
+			<div class='panel-text' style='padding-left:20px;'>
+				Then Jane discovered Peony
+			</div>
+		</div>
+	</div>
+	<div class='panel-white-background' style='color:#58595b;'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-xs-12' style='margin-bottom:60px;'>
+					Now she simply...
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-xs-12 col-sm-6 col-md-4' style='margin-bottom:60px;'>
+					<img src='img/icon-pin.png' /><br />
+					1. Sets her location
+				</div>
+				<div class='col-xs-12 col-sm-6 col-md-4' style='margin-bottom:60px;'>
+					<img src='img/icon-person.png' /><br />
+					2. Chooses her manicurist
+				</div>
+				<div class='col-xs-12 col-md-4' style='margin-bottom:60px;'>
+					<img src='img/icon-heart.png' /><br />
+					3. Chooses her style
+				</div>
+			</div>
+			<div class='row'>
+				<div>...and relaxes as her manicurist comes to her!</div>
+			</div>
+		</div>
+	</div>
+	<div style='text-align:center;padding-bottom:40px;'>
+		<div id='signup-modal-btn' class='btn btn-primary btn-lg' data-toggle='modal' data-target='#signup-modal'>
+			Get your next manicure on <em>your</em> schedule
+		</div>
+	</div>
+	<div class='bottom-panel'>&copy; 2014 Peony</div>
+	<div class='modal fade' id='signup-modal' tabindex='-1' role='dialog'>
+		<div class='modal-dialog'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button class='close' data-dismiss='modal'>
+						<span>x<span>
+					</button>
+					<h2 class='modal-title'>Be first in line for home manis/pedis!</h2>
+				</div>
+				<div class='modal-body'>
+					<form action='https://docs.google.com/forms/d/145Ed-IX9JnI8oiByoKO_jfamH_4XRT2EyrEDMJ83KK4/formResponse'
+						method='POST' id='signup-form' target='hidden-frame'>
+						First Name <input type='text' name='entry.805299408' id='entry_805299408' placeholder='Jane'><br />
+						Last Name <input type='text' name='entry.179792778' id='entry_179792778' placeholder='Doe'><br />
+						Email Address <input type='text' name='entry.512051036' id='entry_512051036' placeholder='janedoe@example.com'><br />
+						[Optional] What interests you about this service?<br />
+						<textarea name='entry.2059151010' rows='8' cols='0' class='ss-q-long' id='entry_2059151010'></textarea>
+						<input type='hidden' name='draftResponse' value='[,,&quot;-5309762947686053019&quot;]'>
+						<input type='hidden' name='pageHistory' value='0'>
+						<input type='hidden' name='fbzx' value='-5309762947686053019'><br />
+						<input type='submit' name='submit' value='Submit' id='ss-submit' class='btn btn-primary btn-lg' disabled>
+					</form>
+					<div id='signup-complete' style='display:none'>
+						Thanks for signing up!
+					</div>
+				</div>
+			</div> <!-- modal-content -->
+		</div> <!-- modal-dialog -->
+	</div> <!-- signup-modal -->
+	<!-- Hidden frame used to hide the result of the form submission -->
+	<iframe name='hidden-frame' style='display:none'></iframe>
+	<script src='js/jquery.2.1.1.min.js'></script>
+	<script src='js/bootstrap.3.2.0.min.js'></script>
+	<script>
+		function validateSignup() {
+			// First name
+			if ($('#entry_805299408').val().trim().length > 0 && 
+				// Last name
+				$('#entry_179792778').val().trim().length > 0 && 
+				// Email address
+				/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test($('#entry_512051036').val().trim())) {
+				$('#ss-submit').removeProp('disabled');
+			} else {
+				$('#ss-submit').prop('disabled', true);
+			}
+		}
+
+		$(document).ready(function() {
+			$('#entry_805299408').keypress(validateSignup);
+			$('#entry_179792778').keypress(validateSignup);
+			$('#entry_512051036').keypress(validateSignup);
+			$('#signup-form').submit(function() {
+				$('#signup-form').hide();
+				$('#signup-complete').show();
+			});
+		});
+	</script>
+</body>
 </html>
+
