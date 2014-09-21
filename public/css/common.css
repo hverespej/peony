@@ -66,3 +66,30 @@ input[type=text], textarea {
 	margin-bottom: 10px;
 }
 
+.option-label {
+	font-family: 'roboto-slab';
+	background-color: #a1d6bc;
+	border-radius: 10px;
+	cursor: pointer;
+	overflow: hidden;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 20px;
+	border: 2px solid #58595b;
+}
+
+.option-label-text {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.option-label-right-arrow {
+	display: inline-block;
+	background: url('../img/arrow.png'), #58595b;
+	background-size: 12px;
+	background-repeat: no-repeat;
+	background-position: 5px;
+	width: 21px;
+}
+

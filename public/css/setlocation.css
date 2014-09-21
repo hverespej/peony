@@ -1,54 +1,21 @@
 html { 
 	height: 100%; 
 }
+
 body {
 	height: 100%; 
 }
-h3{
-	font-family: 'Maven';
-}
+
 #map-canvas {
 	width: 100%;
 	height: 90%;
 }
-.btn-primary{
-	background-color: red;
-}
+
 .pin-wrapper {
 	top: calc(50% - 50px);
 	margin-left: calc(50% - 92px);
 	position: absolute;
 	text-align: center;
 	z-index: 1;
-}
-.pin-label {
-	background-color: #a0d5bb;
-	border-radius: 10px;
-	border: 4px solid #585858;
-	cursor: pointer;
-	height: 40px;
-	overflow: hidden;
-	width: 183px;
-	margin-bottom: 5px;
-}
-.btn-request{
-	padding-right: 3px;
-	background: url('../img/arrow.png'), #585858;
-	background-size: 12px;
-	background-repeat: no-repeat;
-	background-position: 5px;
-	border-radius: 0px; 
-	border: 1px solid #585858;
-}
-
-h4 {
-	font-family: 'roboto-slab';
-	text-transform: uppercase;
-	margin-right: 1px;
-	margin-left: 5px;
-	display: inline-block;
-	font-size: 14px;
-	margin-top: 2px;
-	margin-bottom: 2px;
 }
 
