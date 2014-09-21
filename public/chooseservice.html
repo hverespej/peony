@@ -38,9 +38,9 @@
 					Quantity
 				</div>
 				<div class='service-selector-section quantity-counter'>
-					0
+					<span id='c1n'>0</span>
 				</div>
-				<div class='option-label'>
+				<div id='c1' class='option-label'>
 					<div class='option-label-text'>ADD +</div>
 				</div>
 			</div>
@@ -58,9 +58,9 @@
 					Quantity
 				</div>
 				<div class='service-selector-section quantity-counter'>
-					0
+					<span id='c2n'>0</span>
 				</div>
-				<div class='option-label'>
+				<div id='c2' class='option-label'>
 					<div class='option-label-text'>ADD +</div>
 				</div>
 			</div>
@@ -78,9 +78,9 @@
 					Quantity
 				</div>
 				<div class='service-selector-section quantity-counter'>
-					0
+					<span id='c3n'>0</span>
 				</div>
-				<div class='option-label'>
+				<div id='c3' class='option-label'>
 					<div class='option-label-text'>ADD +</div>
 				</div>
 			</div>
@@ -98,9 +98,9 @@
 					Quantity
 				</div>
 				<div class='service-selector-section quantity-counter'>
-					0
+					<span id='c4n'>0</span>
 				</div>
-				<div class='option-label'>
+				<div id='c4' class='option-label'>
 					<div class='option-label-text'>ADD +</div>
 				</div>
 			</div>
@@ -116,5 +116,14 @@
 
 	<script src="js/jquery.2.1.1.min.js"></script>
 	<script src="js/bootstrap.3.2.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.option-label').click(function() {
+				var target = '#' + $(this).attr('id') + 'n';
+				var newVal = parseInt($(target).text()) + 1;
+				$(target).text(newVal);
+			});
+		});
+	</script>
 </body>
 </html>
