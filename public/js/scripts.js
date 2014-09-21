@@ -12,16 +12,16 @@ $( document ).ready(function() {
 });
 
 function initialize() {
-  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  var myLatlng = new google.maps.LatLng(47.672824,-122.1957);
   var mapOptions = {
     center: myLatlng,
-    zoom: 8,
-    disableDefaultUI: true
+    zoom: 14//,
+    //disableDefaultUI: true
   };
 
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-  marker.setMap(null);
+  //marker.setMap(null);
   // var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
 
   var marker = new google.maps.Marker({
