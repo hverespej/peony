@@ -5,7 +5,7 @@ $(document).ready(function() {
 		}
 		$('#set-loc-btn').click(function(){
 			var loc = map.getCenter();
-			alert('lat: ' + loc.lat() + ', lng: ' + loc.lng());
+			document.location.href = '/choosetechnician.html?lat=' + loc.lat() + '&lng=' + loc.lng();
 		}); 
 	});
 });

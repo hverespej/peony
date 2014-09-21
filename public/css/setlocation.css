@@ -1,20 +1,8 @@
-@font-face {
-    font-family: 'Maven';
-    src: url('../fonts/mavenprolight-300-webfont.woff');
-}
-@font-face{
-	font-family: 'roboto-slab';
-	src: url('../fonts/RobotoSlab-Regular.ttf');
-}
-
 html { 
 	height: 100%; 
 }
 body {
 	height: 100%; 
-	margin: 0;
-	padding: 0;
-	background-color: black;
 }
 h3{
 	font-family: 'Maven';
@@ -22,11 +10,6 @@ h3{
 #map-canvas {
 	width: 100%;
 	height: 90%;
-}
-.heading{
-	width: 100%;
-	text-align: center;
-	background: white;
 }
 .btn-primary{
 	background-color: red;
@@ -58,11 +41,6 @@ h3{
 	border: 1px solid #585858;
 }
 
-.logo {
-	height: 55px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
 h4 {
 	font-family: 'roboto-slab';
 	text-transform: uppercase;
@@ -72,26 +50,5 @@ h4 {
 	font-size: 14px;
 	margin-top: 2px;
 	margin-bottom: 2px;
-}
-.subheader{
-	width: 100%;
-	height: 24px;
-	color: #fa947d;
-	background: #585858;
-	font-family: 'roboto-slab';
-	font-size: 14px;
-	padding-top: 2px;
-}
-.menu{
-	background: url('../img/menu.png');
-	background-size: 45px;
-	background-repeat: no-repeat;
-	height: 55px;
-	width: 45px;
-	margin-right: 10px;
-	margin-top: 11px;
-	position: absolute;
-	top: 0;
-	right: 0;
 }
 

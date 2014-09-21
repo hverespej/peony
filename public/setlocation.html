@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<link rel='stylesheet' href='css/bootstrap.3.2.0.min.css'>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/setlocation.css">
 </head>
 <body>
-  <div class="heading">
-    <img class="logo" src="img/logo.png">
-    <div class="pull-right menu"></div>
-    <div class="subheader">REQUEST AN APPOINTMENT</div>
-  </div>
+	<div class="header">
+		<div class='container'>
+			<div class='row'>
+				<div class='col-xs-offset-2 col-xs-8'>
+					<img src="img/logo.png" />
+				</div>
+				<div class='col-xs-2'>
+					<div class="menu"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="subheader">REQUEST AN APPOINTMENT</div>
 
-  <div class="pin-wrapper">
+	<div class="pin-wrapper">
 		<div class='pin-label'>
 			<h4>Set your location</h4>
 			<button id='set-loc-btn' class="btn btn-request">&nbsp;</button>
 		</div>
 		<img src='img/pin.png' />
-  </div>
+	</div>
 
-  <div id="map-canvas"/>
+	<div id="map-canvas"/>
 
 	<script src="js/jquery.2.1.1.min.js"></script>
 	<script src="js/bootstrap.3.2.0.min.js"></script>

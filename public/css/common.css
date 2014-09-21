@@ -1,0 +1,49 @@
+@font-face {
+	font-family: 'Maven';
+	src: url('../fonts/mavenprolight-300-webfont.woff');
+}
+@font-face{
+	font-family: 'roboto-slab';
+	src: url('../fonts/RobotoSlab-Regular.ttf');
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'roboto-slab';
+	background-color: white;
+}
+
+.header {
+	text-align:center;
+	padding: 25px 10px 25px 10px;
+}
+
+.subheader{
+	color: #fa947d;
+	background: #585858;
+	font-size: 14px;
+	padding: 5px 10px 5px 10px;
+}
+
+.menu{
+	background: url('../img/menu.png');
+	background-size: 45px;
+	background-repeat: no-repeat;
+	height: 55px;
+	width: 45px;
+	margin-right: 10px;
+	margin-top: 11px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.valign {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+

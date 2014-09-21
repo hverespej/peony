@@ -5,27 +5,10 @@
  * grey: #58595b
  */
 
-@font-face {
-	font-family: 'Maven';
-	src: url('../fonts/mavenprolight-300-webfont.woff');
-}
-
-@font-face{
-	font-family: 'roboto-slab';
-	src: url('../fonts/RobotoSlab-Regular.ttf');
-}
-
 body {
-	margin: 0px;
-	background-color: white;
-	font-family: 'roboto-slab';
 	font-size: 25px;
 }
 
-.top-panel {
-	text-align:center;
-	padding: 20px 10px 20px 10px;
-}
 
 .content-panel {
 	margin: 0px;
@@ -40,6 +23,7 @@ body {
 	background-color: black;
 	color: white;
 	text-align: center;
+	font-size: 15px;
 }
 
 .panel-1-image {
@@ -105,14 +89,6 @@ body {
 .panel-white-background {
 	text-align: center;
 	padding: 80px 40px 80px 40px;
-}
-
-.panel-text {
-	position: relative;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
 }
 
 #signup-modal-btn {
