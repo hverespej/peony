@@ -20,6 +20,7 @@ body {
 
 .panel-1-image {
 	width: 500px;
+	max-width:100%;
 	height: 333px;
 	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
 		url('../img/image-equipment-small.jpg');
