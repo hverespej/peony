@@ -25,6 +25,9 @@
 		<div class='row'>
 			<div class='col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6'>
 				<div class='profile-list'>
+					<div id='invalid-msg' style='display:none;color:red;margin-bottom:10px;'>
+						* Invalid credentials, please try again
+					</div>
 					<form action='setlocation.html' method='GET'>
 						<div class='form-item'>
 							Username<br />
@@ -45,6 +48,16 @@
 
 	<script src='js/jquery.2.1.1.min.js'></script>
 	<script src='js/bootstrap.3.2.0.min.js'></script>
+	<script>
+		$(document).ready(function() {
+			$('#ss-submit').click(function() {
+				if ($('#entry_805299408').val() !== 'test123' || $('#entry_179792778').val() !== 'test123') {
+					$('#invalid-msg').show();
+					return false;
+				}
+			});
+		});
+	</script>
 </body>
 </html>
 
