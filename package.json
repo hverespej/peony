@@ -2,6 +2,11 @@
   "name": "PeonyApp",
   "version": "0.0.1",
   "description": "Peony app website",
+  "author": "Hakon Verespej <mrhakon@gmail.com>",
+  "contributors": [{
+    "name": "Hakon Verespej",
+    "email": "mrhakon@gmail.com"
+  }],
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,11 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hverespej/sw-2014-09-19.git"
+    "url": "https://github.com/hverespej/peony.git"
   },
   "dependencies": {
     "express": "^4.9.4"
   },
+  "private": true,
   "engines": {
     "node": "0.10.x"
   }

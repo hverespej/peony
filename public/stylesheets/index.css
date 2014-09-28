@@ -23,13 +23,13 @@ body {
 	max-width:100%;
 	height: 333px;
 	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
-		url('../img/image-equipment-small.jpg');
+		url('../images/image-equipment-small.jpg');
 	background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
-		url('../img/image-equipment-small.jpg');
+		url('../images/image-equipment-small.jpg');
 	background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
-		url('../img/image-equipment-small.jpg');
+		url('../images/image-equipment-small.jpg');
 	background-image: linear-gradient(left, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
-		url('../img/image-equipment-small.jpg');
+		url('../images/image-equipment-small.jpg');
 	background-repeat: no-repeat;
 }
 
@@ -55,13 +55,13 @@ body {
 	background-position: right;
 	background-repeat: no-repeat;
 	background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
-		url('../img/image-feet-small.jpg');
+		url('../images/image-feet-small.jpg');
 	background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
-		url('../img/image-feet-small.jpg');
+		url('../images/image-feet-small.jpg');
 	background-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
-		url('../img/image-feet-small.jpg');
+		url('../images/image-feet-small.jpg');
 	background-image: linear-gradient(right, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1.0) 100%),
-		url('../img/image-feet-small.jpg');
+		url('../images/image-feet-small.jpg');
 }
 
 .panel-2-text-background {

@@ -1,5 +1,4 @@
-Startup Weekend, Women's Edition, 2014-09-19
-============================================
+Peony App
+=========
 
-Repo for Startup Weekend dev.
 

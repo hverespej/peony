@@ -27,17 +27,17 @@ body {
 }
 
 body.bg-green-dots {
-	background-image: url("../img/bg-green-dots-small.png");
+	background-image: url("../images/bg-green-dots-small.png");
 	background-repeat: true;
 }
 
 body.bg-grey-dots {
-	background-image: url("../img/bg-grey-dots-small.png");
+	background-image: url("../images/bg-grey-dots-small.png");
 	background-repeat: true;
 }
 
 body.bg-pink-dots {
-	background-image: url("../img/bg-pink-dots-small.png");
+	background-image: url("../images/bg-pink-dots-small.png");
 	background-repeat: true;
 }
 
@@ -61,7 +61,7 @@ body.bg-pink-dots {
 }
 
 .menu {
-	background: url('../img/menu.png');
+	background: url('../images/menu.png');
 	background-size: 45px;
 	background-repeat: no-repeat;
 	height: 55px;
@@ -119,7 +119,7 @@ a.option-label {
 
 .option-label-right-arrow {
 	display: inline-block;
-	background: url('../img/arrow.png'), #58595b;
+	background: url('../images/arrow.png'), #58595b;
 	background-size: 12px;
 	background-repeat: no-repeat;
 	background-position: 5px;
