@@ -1,23 +1,11 @@
-$(document).ready(function() {
-	initializeMap(function(err, map) {
-		if (err) {
-			alert(err);
-		}
-		$('#set-loc-btn').click(function(){
-			var loc = map.getCenter();
-			document.location.href = '/choosetechnician.html?lat=' + loc.lat() + '&lng=' + loc.lng();
-		}); 
-	});
-});
-
-function initializeMap(callback) {
-	var nytecLatLng = new google.maps.LatLng(47.672824, -122.1957);
+function initializeMap(canvas, callback) {
+	var defaultLatLng = new google.maps.LatLng(47.672824, -122.1957);
 	getGeolocation(function(err, latLng) {
 		if (err) {
 			console.log('Failed to get geolocation, so using default. Err: ' + err);
-			latLng = nytecLatLng;
+			latLng = defaultLatLng;
 		}
-		var map = new google.maps.Map(document.getElementById("map-canvas"), {
+		var map = new google.maps.Map(canvas, {
 			center: latLng,
 			zoom: 15,
 			panControl: false,
