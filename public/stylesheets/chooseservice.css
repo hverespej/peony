@@ -9,19 +9,17 @@
 	vertical-align: top;
 }
 
-.service-selector-section {
-	padding: 2px;
-	display: table-cell;
-	font-size: 12px;
-	text-align: right;
-	vertical-align: middle;
-}
-
 .quantity-counter {
-	padding-left: 10px;
-	font-size: 24px;
+	text-align: center;
+	font-size: 40px;
 	font-weight: bold;
 	color: #fb957e;
+}
+
+.quantity-button {
+	width: 40px;
+	height: 40px;
+	text-align: center;
 }
 
 .option-label {

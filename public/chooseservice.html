@@ -9,16 +9,8 @@
 </head>
 <body class='bg-green-dots'>
 	<div class='header'>
-		<div class='container'>
-			<div class='row'>
-				<div class='col-xs-offset-2 col-xs-8'>
-					<a href='/'><img src='images/logo.png' class='logo' /></a>
-				</div>
-				<div class='col-xs-2'>
-					<div class='menu'></div>
-				</div>
-			</div>
-		</div>
+		<img src='images/menu-icon.png' style='position:absolute;top:0px;left:0px;' />
+		<a href='/'><img src='images/logo.png' class='logo' /></a>
 	</div>
 	<div class='subheader'>SETUP APPOINTMENT</div>
 
@@ -30,85 +22,121 @@
 			<div class='service-description'>
 				<div class='profile-text'>
 					<strong>Express Manicure</strong><br />
-					It's fast and less expensive
+					It's fast and less expensive<br />
+					<br />
+					<em>Cost: $25</em>
 				</div>
 			</div>
 			<div class='service-selector'>
-				<div class='service-selector-section'>
-					Current<br />
-					Quantity
-				</div>
-				<div class='service-selector-section quantity-counter'>
-					<span id='c1n'>0</span>
-				</div>
-				<div id='c1' class='option-label'>
-					<div class='option-label-text'>ADD +</div>
-				</div>
+				<table>
+					<tr>
+						<td>
+							<div id='c1-a' class='option-label quantity-button'>+</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id='c1-c' class='quantity-counter'>0</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id='c1-s' class='option-label quantity-button'>-</div>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<div class='profile-entry'>
 			<div class='service-description'>
 				<div class='profile-text'>
 					<strong>Express Pedicure</strong><br />
-					It's fast and less expensive
+					It's fast and less expensive<br />
+					<br />
+					<em>Cost: $35</em>
 				</div>
 			</div>
 			<div class='service-selector'>
-				<div class='service-selector-section'>
-					Current<br />
-					Quantity
-				</div>
-				<div class='service-selector-section quantity-counter'>
-					<span id='c2n'>0</span>
-				</div>
-				<div id='c2' class='option-label'>
-					<div class='option-label-text'>ADD +</div>
-				</div>
+				<table>
+					<tr>
+						<td>
+							<div id='c2-a' class='option-label quantity-button'>+</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id='c2-c' class='quantity-counter'>0</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id='c2-s' class='option-label quantity-button'>-</div>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<div class='profile-entry'>
 			<div class='service-description'>
 				<div class='profile-text'>
 					<strong>Deluxe Manicure</strong><br />
-					It's fast and less expensive
+					It's long and luxurious<br />
+					<br />
+					<em>Cost: $35</em>
 				</div>
 			</div>
 			<div class='service-selector'>
-				<div class='service-selector-section'>
-					Current<br />
-					Quantity
-				</div>
-				<div class='service-selector-section quantity-counter'>
-					<span id='c3n'>0</span>
-				</div>
-				<div id='c3' class='option-label'>
-					<div class='option-label-text'>ADD +</div>
-				</div>
+				<table>
+					<tr>
+						<td>
+							<div id='c3-a' class='option-label quantity-button'>+</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id='c3-c' class='quantity-counter'>0</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id='c3-s' class='option-label quantity-button'>-</div>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<div class='profile-entry'>
 			<div class='service-description'>
 				<div class='profile-text'>
 					<strong>Deluxe Pedicure</strong><br />
-					It's fast and less expensive
+					It's long and luxurious<br />
+					<br />
+					<em>Cost: $45</em>
 				</div>
 			</div>
 			<div class='service-selector'>
-				<div class='service-selector-section'>
-					Current<br />
-					Quantity
-				</div>
-				<div class='service-selector-section quantity-counter'>
-					<span id='c4n'>0</span>
-				</div>
-				<div id='c4' class='option-label'>
-					<div class='option-label-text'>ADD +</div>
-				</div>
+				<table>
+					<tr>
+						<td>
+							<div id='c4-a' class='option-label quantity-button'>+</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id='c4-c' class='quantity-counter'>0</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id='c4-s' class='option-label quantity-button'>-</div>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<div class='profile-entry' style='margin-bottom:20px;'></div>
 		<div style='text-align:center;margin-top:10px;'>
-			<a href='choosetime.html' class='option-label' style='display:inline-block;'>
+			<a href='choosetime.html' class='option-label'>
 				<div class='option-label-text'>NEXT</div>
 				<div class='option-label-right-arrow'>&nbsp;</div>
 			</a>
@@ -120,8 +148,22 @@
 	<script>
 		$(document).ready(function() {
 			$('.option-label').click(function() {
-				var target = '#' + $(this).attr('id') + 'n';
-				var newVal = parseInt($(target).text()) + 1;
+				var id = $(this).attr('id');
+				var target = '#' + id.slice(0, -1) + 'c';
+				var newVal = parseInt($(target).text());
+
+				if (id.slice(-1) === 'a') {
+					newVal++;
+				} else {
+					newVal--;
+				}
+
+				if (newVal < 0) {
+					newVal = 0;
+				} else if (newVal > 4) {
+					newVal = 4;
+				}
+
 				$(target).text(newVal);
 			});
 		});

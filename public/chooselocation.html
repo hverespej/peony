@@ -4,34 +4,68 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no' />
 	<link rel='stylesheet' href='stylesheets/bootstrap.3.2.0.min.css'>
 	<link rel='stylesheet' href='stylesheets/common.css'>
-	<link rel='stylesheet' href='stylesheets/setlocation.css'>
+	<link rel='stylesheet' href='stylesheets/chooselocation.css'>
 	<title>Peony</title>
 </head>
 <body>
 	<div class='header'>
-		<div class='container'>
-			<div class='row'>
-				<div class='col-xs-offset-2 col-xs-8'>
-					<a href='/'><img src='images/logo.png' class='logo' /></a>
+		<img src='images/menu-icon.png' style='position:absolute;top:0px;left:0px;' />
+		<a href='/'><img src='images/logo.png' class='logo' /></a>
+	</div>
+	<div class='subheader'>SETUP APPOINTMENT</div>
+
+	<div class='profile-list'>
+		<div class='profile-list-header'>
+			Where would you like us to come?
+		</div>
+		<div class='profile-entry'>
+			<a href='choosetechnician.html'>
+				<div class='service-description'>
+					<div class='profile-text'>
+						<strong>Home</strong><br />
+						1125 E Olive St, Unit 406<br />
+						Seattle, WA 98122<br />
+					</div>
 				</div>
-				<div class='col-xs-2'>
-					<div class='menu'></div>
+			</a>
+		</div>
+		<div class='profile-entry'>
+			<a href='choosetechnician.html'>
+				<div class='service-description'>
+					<div class='profile-text'>
+						<strong>Vacation Home</strong><br />
+						2223 NW Talus Drive<br />
+						Issaquah, WA 98027<br />
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class='profile-entry'>
+			<div class='service-description'>
+				<div class='profile-text'>
+					<strong>Add New Location</strong><br />
+					Street Address<br />
+					<input type='text' name='street-address' id='street-address' placeholder='Ex: 4242 Some St'>
+					Unit Number (if applicable)<br />
+					<input type='text' name='unit-number' id='unit-number' placeholder='Ex: 42'><br />
+					City<br />
+					<input type='text' name='unit-number' id='unit-number' placeholder='Ex: Seattle'><br />
+					State<br />
+					<input type='text' name='unit-number' id='unit-number' placeholder='Ex: WA'><br />
+					Zip<br />
+					<input type='text' name='unit-number' id='unit-number' placeholder='Ex: 98104'><br />
+				</div>
+				<br />
+				<div style='text-align:center;'>
+					<a id='add-location' class='option-label'>
+						<div class='option-label-text'>ADD LOCATION</div>
+					</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class='subheader'>SETUP APPOINTMENT</div>
-
-
-	<div style='text-align:center;margin-top:10px;'>
-		<a href='choosetechnician.html' class='option-label' style='display:inline-block;'>
-			<div class='option-label-text'>NEXT</div>
-			<div class='option-label-right-arrow'>&nbsp;</div>
-		</a>
-	</div>
 
 	<script src='javascripts/jquery.2.1.1.min.js'></script>
 	<script src='javascripts/bootstrap.3.2.0.min.js'></script>
-	<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
 </body>
 </html>

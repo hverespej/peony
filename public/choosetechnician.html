@@ -4,20 +4,13 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no' />
 	<link rel='stylesheet' href='stylesheets/bootstrap.3.2.0.min.css'>
 	<link rel='stylesheet' href='stylesheets/common.css'>
+	<link rel='stylesheet' href='stylesheets/choosetechnician.css'>
 	<title>Peony</title>
 </head>
 <body class='bg-pink-dots'>
 	<div class='header'>
-		<div class='container'>
-			<div class='row'>
-				<div class='col-xs-offset-2 col-xs-8'>
-					<a href='/'><img src='images/logo.png' class='logo' /></a>
-				</div>
-				<div class='col-xs-2'>
-					<div class='menu'></div>
-				</div>
-			</div>
-		</div>
+		<img src='images/menu-icon.png' style='position:absolute;top:0px;left:0px;' />
+		<a href='/'><img src='images/logo.png' class='logo' /></a>
 	</div>
 	<div class='subheader'>SETUP APPOINTMENT</div>
 
@@ -25,7 +18,7 @@
 		<div class='profile-list-header'>
 			Available nail technicians
 		</div>
-		<div class='profile-entry'>
+		<div class='profile-entry' data-toggle='modal' data-target='#profile-modal'>
 			<img src='images/tech1.jpg' />
 			<div class='profile-text'>
 				<strong>Justine</strong><br />
@@ -33,14 +26,8 @@
 				Justine is a master of creating a calming and 
 				relaxing experience that suit any lifestyle.
 			</div>
-			<div>
-				<a href='javascript:'>READ MORE &gt;</a>
-				<a class='option-label pull-right' href='confirmappointment.html'>
-					<div class='option-label-text'>SELECT</div>
-				</a>
-			</div>
 		</div>
-		<div class='profile-entry'>
+		<div class='profile-entry' data-toggle='modal' data-target='#profile-modal'>
 			<img src='images/tech2.jpg' />
 			<div class='profile-text'>
 				<strong>Janice</strong><br />
@@ -48,14 +35,8 @@
 				work but also about building relationships with 
 				wonderful people.
 			</div>
-			<div>
-				<a href='javascript:'>READ MORE &gt;</a>
-				<a class='option-label pull-right' href='confirmappointment.html'>
-					<div class='option-label-text'>SELECT</div>
-				</a>
-			</div>
 		</div>
-		<div class='profile-entry'>
+		<div class='profile-entry' data-toggle='modal' data-target='#profile-modal'>
 			<img src='images/tech3.jpg' />
 			<div class='profile-text'>
 				<strong>Tammy</strong><br />
@@ -63,14 +44,8 @@
 				outdoors, Tammy gets great satisfaction from 
 				working with people everyday.
 			</div>
-			<div>
-				<a href='javascript:'>READ MORE &gt;</a>
-				<a class='option-label pull-right' href='confirmappointment.html'>
-					<div class='option-label-text'>SELECT</div>
-				</a>
-			</div>
 		</div>
-		<div class='profile-entry'>
+		<div class='profile-entry' data-toggle='modal' data-target='#profile-modal'>
 			<img src='images/tech4.jpg' />
 			<div class='profile-text'>
 				<strong>Heather</strong><br />
@@ -78,15 +53,32 @@
 				all the time and say they love her nails. And if 
 				you like truly creative nails, you'll love her work.
 			</div>
-			<div>
-				<a href='javascript:'>READ MORE &gt;</a>
-				<a class='option-label pull-right' href='confirmappointment.html'>
-					<div class='option-label-text'>SELECT</div>
-				</a>
-			</div>
 		</div>
 		<div class='profile-entry' style='margin-bottom:20px;'></div>
-	</div>
+	</div> <!-- profile-list -->
+
+	<div class='modal fade' id='profile-modal' tabindex='-1' role='dialog'>
+		<div class='modal-dialog'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button class='close' data-dismiss='modal'>
+						<span>x<span>
+					</button>
+					<h2 class='modal-title'>Justine</h2>
+				</div>
+				<div class='modal-body' style='text-align:center;'>
+					<img src='images/tech1.jpg' style='width:100%;max-width:150px;' /><br />
+					<br />
+					Justine is cool.<br />
+					<br />
+					<br />
+					<a class='option-label' href='confirmappointment.html'>
+						<div class='option-label-text'>SELECT JUSTINE</div>
+					</a>
+				</div>
+			</div> <!-- modal-content -->
+		</div> <!-- modal-dialog -->
+	</div> <!-- signup-modal -->
 
 	<script src='javascripts/jquery.2.1.1.min.js'></script>
 	<script src='javascripts/bootstrap.3.2.0.min.js'></script>

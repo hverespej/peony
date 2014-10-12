@@ -1,0 +1,8 @@
+.profile-entry {
+	cursor: pointer;
+}
+
+.profile-entry a {
+	text-decoration: none;
+	color: inherit;
+}

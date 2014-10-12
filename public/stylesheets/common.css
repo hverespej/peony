@@ -16,6 +16,12 @@
 
 html {
 	height: 100%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
@@ -49,7 +55,7 @@ body.bg-pink-dots {
 }
 
 .header .logo {
-	width: 60%;
+	width: 25%;
 	max-width: 150px;
 }
 
@@ -58,19 +64,6 @@ body.bg-pink-dots {
 	background: #585858;
 	font-size: 14px;
 	padding: 5px 10px 5px 10px;
-}
-
-.menu {
-	background: url('../images/menu.png');
-	background-size: 45px;
-	background-repeat: no-repeat;
-	height: 55px;
-	width: 45px;
-	margin-right: 10px;
-	margin-top: 11px;
-	position: absolute;
-	top: 0;
-	right: 0;
 }
 
 .valign {
@@ -95,6 +88,7 @@ input[type=text], input[type=password], textarea {
 }
 
 .option-label {
+	display: inline-block;
 	font-family: 'roboto-slab';
 	background-color: #a1d6bc;
 	border: 2px solid #58595b;

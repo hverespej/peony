@@ -6,35 +6,42 @@
 	<link rel='stylesheet' href='stylesheets/common.css'>
 	<title>Peony</title>
 </head>
-
 <body class='bg-grey-dots'>
 	<div class='header'>
-		<div class='container'>
-			<div class='row'>
-				<div class='col-xs-offset-2 col-xs-8'>
-					<img src='images/logo.png' class='logo' />
-				</div>
-				<div class='col-xs-2'>
-					<div class='menu'></div>
-				</div>
-			</div>
-		</div>
+		<img src='images/menu-icon.png' style='position:absolute;top:0px;left:0px;' />
+		<a href='/'><img src='images/logo.png' class='logo' /></a>
 	</div>
 	<div class='subheader'>SETUP APPOINTMENT</div>
 
 	<div class='profile-list'>
-		<div class='container'>
-			<div class='row'>
-				<div class='col-xs-12'>
-					<img src='images/tech1.jpg' style='float:right;width:25%;max-width:150px;margin-left:10px;' />
-					You've selected JUSTINE as your nail technician for today.
+		<div class='profile-list-header'>
+			Confirm Appointment
+		</div>
+		<div class='profile-entry' data-toggle='modal' data-target='#profile-modal'>
+			<div class='profile-text'>
+				<strong>Services</strong><br />
+				asdf
+			</div>
+			<div class='profile-text'>
+				<strong>Time</strong><br />
+				asdf
+			</div>
+			<div class='profile-text'>
+				<strong>Location</strong><br />
+				asdf
+			</div>
+			<div class='profile-text'>
+				<strong>Nail technician</strong><br />
+				<img src='images/tech1.jpg' style='width:25%;max-width:150px;margin-left:10px;' />
+				<div class='profile-text'>
+					Justine will be your nail technician.
 				</div>
 			</div>
 		</div>
+		<div class='profile-entry' style='margin-bottom:20px;'></div>
 		<div style='text-align:center;margin-top:10px;'>
 			<a class='option-label' href='confirmpayment.html' style='display:inline-block;'>
 				<div class='option-label-text'>CONFIRM</div>
-				<div class='option-label-right-arrow'>&nbsp;</div>
 			</a>
 		</div>
 	</div>
