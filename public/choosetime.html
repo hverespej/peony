@@ -20,10 +20,10 @@
 		</div>
 		<div class='profile-entry' style='margin-bottom:20px;'>
 			Day<br />
-			[TODO: Date Picker]<br /><br />
+			<input id='date' type='date' name='date' min='2014-09-01'><br /><br />
 
 			Time<br />
-			[TODO: Time Picker]
+			<input id='time' type='time' name='time' step='1800'>
 		</div>
 		<div style='text-align:center;margin-top:10px;'>
 			<a href='chooselocation.html' class='option-label' style='display:inline-block;'>
@@ -35,5 +35,27 @@
 
 	<script src='javascripts/jquery.2.1.1.min.js'></script>
 	<script src='javascripts/bootstrap.3.2.0.min.js'></script>
+	<script>
+		$(document).on('ready', function() {
+			function pad(val) {
+				return ('0' + val).slice(-2);
+			}
+
+			var dt = new Date();
+			dt.setHours(dt.getHours() + 1);
+		    dt.setMinutes(30 * Math.round(dt.getMinutes() / 30));
+		    dt.setSeconds(0);
+		    dt.setMilliseconds(0);
+
+			var date = dt.getFullYear() + '-' + pad(dt.getMonth()) + '-' + pad(dt.getDate());
+			var time = pad(dt.getHours()) + ':' + pad(dt.getMinutes()) + ':' + pad(dt.getSeconds());
+
+			$('#date').prop('min', date);
+			$('#time').prop('min', time);
+
+			$('#date').val(date);
+			$('#time').val(time);
+		});
+	</script>
 </body>
 </html>

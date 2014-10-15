@@ -40,20 +40,22 @@
 				</div>
 			</a>
 		</div>
-		<div class='profile-entry'>
+		<div id='new-location' class='profile-entry'>
 			<div class='service-description'>
 				<div class='profile-text'>
 					<strong>Add New Location</strong><br />
+					Description<br />
+					<input type='text' name='description' id='description' placeholder='Ex: Home'>
 					Street Address<br />
-					<input type='text' name='street-address' id='street-address' placeholder='Ex: 4242 Some St'>
+					<input type='text' name='street' id='street' placeholder='Ex: 4242 Some St'>
 					Unit Number (if applicable)<br />
-					<input type='text' name='unit-number' id='unit-number' placeholder='Ex: 42'><br />
+					<input type='text' name='unit' id='unit' placeholder='Ex: 42'><br />
 					City<br />
-					<input type='text' name='unit-number' id='unit-number' placeholder='Ex: Seattle'><br />
+					<input type='text' name='city' id='city' placeholder='Ex: Seattle'><br />
 					State<br />
-					<input type='text' name='unit-number' id='unit-number' placeholder='Ex: WA'><br />
-					Zip<br />
-					<input type='text' name='unit-number' id='unit-number' placeholder='Ex: 98104'><br />
+					<input type='text' name='state' id='state' placeholder='Ex: WA'><br />
+					Zip Code<br />
+					<input type='text' name='zip' id='zip' placeholder='Ex: 98104'><br />
 				</div>
 				<br />
 				<div style='text-align:center;'>
@@ -67,5 +69,25 @@
 
 	<script src='javascripts/jquery.2.1.1.min.js'></script>
 	<script src='javascripts/bootstrap.3.2.0.min.js'></script>
+	<script>
+		$(document).on('ready', function() {
+			$('#add-location').on('click', function() {
+				var newEntry = 
+					"<div class='profile-entry'><a href='choosetechnician.html'><div class='service-description'><div class='profile-text'><strong>" +
+					$('#description').val() + '</strong><br />' +
+					$('#street').val() + ', Unit ' + $('unit').val() + '<br />' +
+					$('#city').val() + ', ' + $('#state').val() + $('#zip').val() + '<br />' +
+					'</div></div></a></div>';
+				$('#new-location').before(newEntry);
+
+				$('#description').val('');
+				$('#street').val('');
+				$('unit').val('');
+				$('#city').val('');
+				$('#state').val('');
+				$('#zip').val('');
+			});
+		});
+	</script>
 </body>
 </html>
