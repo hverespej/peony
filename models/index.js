@@ -1,3 +1,4 @@
 module.exports = {
-	client: require('./client')
+	client: require('./client'),
+	provider: require('./provider')
 };
