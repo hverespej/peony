@@ -24,14 +24,18 @@ Client.prototype.set = function(properties) {
 	return this;
 };
 
-Client.prototype.load = function(userName) {
+Client.prototype.load = function(options) {
+	if (typeof(options.userName) !== 'string') {
+		throw _err.create(400, 'InvalidProperty', 'Passed options must include userName');
+	}
+
 	var self = this;
 
 	return _dbi.get({
 		db: _db,
 		tableName: _tableName,
 		hashKeyName: _hashKeyName,
-		hashKeyVal: userName
+		hashKeyVal: options.userName
 	}).then(function(serialized) {
 		self.userName = serialized.userName.S;
 		self.firstName = serialized.firstName.S;
@@ -143,7 +147,9 @@ module.exports = {
 	create: function() {
 		return new Client();
 	},
-	list: function() {
-		_dbi.list();
+	list: function(options) {
+		options = options || {};
+		options.hashKeyName = _hashKeyName;
+		return _dbi.list(_dbi.createListOptions(_db, _tableName, options));
 	}
 };

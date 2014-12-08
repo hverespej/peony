@@ -7,6 +7,23 @@ var client = require('../models').client;
 describe('models/client', function() {
 	var tableName = 'clients';
 
+	var testData = {
+		userName: 'jm',
+		firstName: 'John',
+		lastName: 'Malkovich',
+		email: 'john@not.really',
+		phone: '555-555-5555',
+		profile: 'Great actor',
+		savedLocations: [],
+		paymentInfo: 'fake',
+		appointments: [],
+		joinedDate: '2014-11-01T12:00:00.000Z',
+
+		storageKey: function() {
+			return { userName: { S: this.userName } };
+		}
+	};
+
 	after(function(done) {
 		return common.clearDb(dynamo).then(function() { done(); });
 	});
@@ -17,30 +34,11 @@ describe('models/client', function() {
 		});
 
 		it ('Should create table', function() {
-			return expect(
-				client.init(dynamo).then(function() {
-					return dynamo.listTablesAsync({});
-				}).then(function(data) {
-					return data.TableNames.length;
-				})
-			).to.eventually.equal(1);
+			return common.testTableCreation(client, dynamo);
 		});
 	});
 
 	describe('#create', function() {
-		var testUserData = {
-			userName: 'jm',
-			firstName: 'John',
-			lastName: 'Malkovich',
-			email: 'john@not.really',
-			phone: '555-555-5555',
-			profile: 'Great actor',
-			savedLocations: [],
-			paymentInfo: 'fake',
-			appointments: [],
-			joinedDate: '2014-11-01T12:00:00.000Z'
-		};
-
 		before(function(done) {
 			return common.clearDb(dynamo).then(function() {
 				return client.init(dynamo);
@@ -55,72 +53,25 @@ describe('models/client', function() {
 
 		describe('#save', function() {
 			beforeEach(function(done) {
-				return dynamo.deleteItemAsync({
-					TableName: tableName,
-					Key: { userName: { S: testUserData.userName } },
-					ReturnConsumedCapacity: 'NONE',
-					ReturnItemCollectionMetrics: 'NONE',
-					ReturnValues: 'NONE'
-				}).then(function() {
-					done();
-				});
+				return common.deleteStoredItem(dynamo, tableName, testData, done);
 			});
 
 			after(function(done) {
-				return dynamo.deleteItemAsync({
-					TableName: tableName,
-					Key: { userName: { S: testUserData.userName } },
-					ReturnConsumedCapacity: 'NONE',
-					ReturnItemCollectionMetrics: 'NONE',
-					ReturnValues: 'NONE'
-				}).then(function() {
-					done();
-				});
+				return common.deleteStoredItem(dynamo, tableName, testData, done);
 			});
 
 			it('Should store object in DB', function() {
-				var c = client.create();
-				c.set(testUserData);
-				return expect(
-					c.save().then(function() {
-						return dynamo.getItemAsync({
-							TableName: tableName,
-							Key: { userName: { S: testUserData.userName } },
-							ConsistentRead: true,
-							ReturnConsumedCapacity: 'NONE'
-						});
-					}).then(function(retrieved) {
-						return retrieved.Item.userName.S;
-					})
-				).to.eventually.equal(testUserData.userName);
+				return common.testStoreObject(client, testData, dynamo, tableName, function(retrieved) {
+					return retrieved.Item.userName.S === testData.userName;
+				});
 			});
 
 			it('Should store object in DB on etag match', function() {
-				var c = client.create();
-				c.set(testUserData);
-				return expect(
-					c.save().then(function() {
-						return dynamo.getItemAsync({
-							TableName: tableName,
-							Key: { userName: { S: testUserData.userName } },
-							ConsistentRead: true,
-							ReturnConsumedCapacity: 'NONE'
-						});
-					}).then(function(retrieved) {
-						return c.save();
-					})
-				).to.eventually.be.fulfilled;
+				return common.testStoreOnEtagMatch(client, testData, dynamo, tableName);
 			});
 
 			it('Should fail to store object on etag mismatch', function() {
-				var c = client.create();
-				c.set(testUserData);
-				return expect(
-					c.save().then(function() {
-						c.etag = '1';
-						return c.save();
-					})
-				).to.eventually.be.rejectedWith(/^Conflict:/);
+				return common.testFailToStoreOnEtagMismatch(client, testData);
 			});
 		});
 
@@ -128,9 +79,9 @@ describe('models/client', function() {
 			it('Should retrieve object with expected properties', function(done) {
 				var c1 = client.create();
 				var c2 = client.create();
-				c1.set(testUserData);
+				c1.set(testData);
 				return c1.save().then(function() {
-					return c2.load(testUserData.userName);
+					return c2.load({ userName: testData.userName });
 				}).then(function() {
 					expect(c2.userName).to.equal(c1.userName);
 					expect(c2.firstName).to.equal(c1.firstName);
@@ -150,17 +101,34 @@ describe('models/client', function() {
 			});
 
 			it('Should fail when loading non-existent object', function() {
-				var c = client.create();
-				return expect(
-					c.load('doesNotExist')
-				).to.eventually.be.rejectedWith(/^Not Found$/);
+				return common.testFailToLoadNonExistantItem(client, { userName: 'non-existent' });
 			});
 		});
 	});
 
 	describe('#list', function() {
-		it('!Is not yet implemented!', function() {
-			expect(client.list).to.throw(/^Not Implemented$/);
+		beforeEach(function(done) {
+			return common.clearDb(dynamo).then(function() {
+				return client.init(dynamo);
+			}).then(function() { done(); });
+		});
+
+		var hashKeyName = 'userName';
+
+		it('Should return no items for empty table', function() {
+			return common.testListReturnsNoItemsForEmptyTable(client);
+		});
+
+		it('Should return items', function() {
+			return common.testListShouldReturnItems(client, hashKeyName, testData, 2);
+		});
+
+		it ('Should return items after continuation token', function() {
+			return common.testListShouldReturnItemsAfterContinuationToken(client, hashKeyName, testData, 12);
+		});
+
+		it('Should allow skipping to key', function() {
+			return common.testListShouldAllowSkippingToKey(client, hashKeyName, testData);
 		});
 	});
 });

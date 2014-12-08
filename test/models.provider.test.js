@@ -7,6 +7,32 @@ var provider = require('../models').provider;
 describe('models/provider', function() {
 	var tableName = 'providers';
 
+	var testData = {
+		userName: 'cw',
+		firstName: 'Christopher',
+		lastName: 'Walken',
+		email: 'christopher@not.really',
+		phone: '555-555-5555',
+		profile: {
+			shortSummary: 'Great actor',
+			fullSummary: 'Great actor and nail tech',
+			quote: 'At its best, life is completely unpredictable.',
+			education: 'Fake Institute of Nails',
+			accreditation: 'Licensed Nail Technician in Washington State',
+			photo: 'http://a3.files.biography.com/image/upload/c_fill,dpr_1.0,g_face,h_300,q_80,w_300/MTIwNjA4NjM0MDAwNjcyMjY4.jpg'
+		},
+		paymentInfo: 'fake',
+		servicesOffered: [],
+		locationsServed: [],
+		availability: [],
+		appointments: [],
+		joinedDate: '2014-11-01T12:00:00.000Z',
+
+		storageKey: function() {
+			return { userName: { S: this.userName } };
+		}
+	};
+
 	after(function(done) {
 		return common.clearDb(dynamo).then(function() { done(); });
 	});
@@ -17,39 +43,11 @@ describe('models/provider', function() {
 		});
 
 		it ('Should create table', function() {
-			return expect(
-				provider.init(dynamo).then(function() {
-					return dynamo.listTablesAsync({});
-				}).then(function(data) {
-					return data.TableNames.length;
-				})
-			).to.eventually.equal(1);
+			return common.testTableCreation(provider, dynamo);
 		});
 	});
 
 	describe('#create', function() {
-		var testUserData = {
-			userName: 'cw',
-			firstName: 'Christopher',
-			lastName: 'Walken',
-			email: 'christopher@not.really',
-			phone: '555-555-5555',
-			profile: {
-				shortSummary: 'Great actor',
-				fullSummary: 'Great actor and nail tech',
-				quote: 'At its best, life is completely unpredictable.',
-				education: 'Fake Institute of Nails',
-				accreditation: 'Licensed Nail Technician in Washington State',
-				photo: 'http://a3.files.biography.com/image/upload/c_fill,dpr_1.0,g_face,h_300,q_80,w_300/MTIwNjA4NjM0MDAwNjcyMjY4.jpg'
-			},
-			paymentInfo: 'fake',
-			servicesOffered: [],
-			locationsServed: [],
-			availability: [],
-			appointments: [],
-			joinedDate: '2014-11-01T12:00:00.000Z'
-		};
-
 		before(function(done) {
 			return common.clearDb(dynamo).then(function() {
 				return provider.init(dynamo);
@@ -64,72 +62,25 @@ describe('models/provider', function() {
 
 		describe('#save', function() {
 			beforeEach(function(done) {
-				return dynamo.deleteItemAsync({
-					TableName: tableName,
-					Key: { userName: { S: testUserData.userName } },
-					ReturnConsumedCapacity: 'NONE',
-					ReturnItemCollectionMetrics: 'NONE',
-					ReturnValues: 'NONE'
-				}).then(function() {
-					done();
-				});
+				return common.deleteStoredItem(dynamo, tableName, testData, done);
 			});
 
 			after(function(done) {
-				return dynamo.deleteItemAsync({
-					TableName: tableName,
-					Key: { userName: { S: testUserData.userName } },
-					ReturnConsumedCapacity: 'NONE',
-					ReturnItemCollectionMetrics: 'NONE',
-					ReturnValues: 'NONE'
-				}).then(function() {
-					done();
-				});
+				return common.deleteStoredItem(dynamo, tableName, testData, done);
 			});
 
 			it('Should store object in DB', function() {
-				var p = provider.create();
-				p.set(testUserData);
-				return expect(
-					p.save().then(function() {
-						return dynamo.getItemAsync({
-							TableName: tableName,
-							Key: { userName: { S: testUserData.userName } },
-							ConsistentRead: true,
-							ReturnConsumedCapacity: 'NONE'
-						});
-					}).then(function(retrieved) {
-						return retrieved.Item.userName.S;
-					})
-				).to.eventually.equal(testUserData.userName);
+				return common.testStoreObject(provider, testData, dynamo, tableName, function(retrieved) {
+					return retrieved.Item.userName.S === testData.userName;
+				});
 			});
 
 			it('Should store object in DB on etag match', function() {
-				var p = provider.create();
-				p.set(testUserData);
-				return expect(
-					p.save().then(function() {
-						return dynamo.getItemAsync({
-							TableName: tableName,
-							Key: { userName: { S: testUserData.userName } },
-							ConsistentRead: true,
-							ReturnConsumedCapacity: 'NONE'
-						});
-					}).then(function(retrieved) {
-						return p.save();
-					})
-				).to.eventually.be.fulfilled;
+				return common.testStoreOnEtagMatch(provider, testData, dynamo, tableName);
 			});
 
 			it('Should fail to store object on etag mismatch', function() {
-				var p = provider.create();
-				p.set(testUserData);
-				return expect(
-					p.save().then(function() {
-						p.etag = '1';
-						return p.save();
-					})
-				).to.eventually.be.rejectedWith(/^Conflict:/);
+				return common.testFailToStoreOnEtagMismatch(provider, testData);
 			});
 		});
 
@@ -137,9 +88,9 @@ describe('models/provider', function() {
 			it('Should retrieve object with expected properties', function(done) {
 				var p1 = provider.create();
 				var p2 = provider.create();
-				p1.set(testUserData);
+				p1.set(testData);
 				return p1.save().then(function() {
-					return p2.load(testUserData.userName);
+					return p2.load({ userName: testData.userName });
 				}).then(function() {
 					expect(p2.userName).to.equal(p1.userName);
 					expect(p2.firstName).to.equal(p1.firstName);
@@ -166,17 +117,34 @@ describe('models/provider', function() {
 			});
 
 			it('Should fail when loading non-existent object', function() {
-				var p = provider.create();
-				return expect(
-					p.load('doesNotExist')
-				).to.eventually.be.rejectedWith(/^Not Found$/);
+				return common.testFailToLoadNonExistantItem(provider, { userName: 'non-existent' });
 			});
 		});
 	});
 
 	describe('#list', function() {
-		it('!Is not yet implemented!', function() {
-			expect(provider.list).to.throw(/^Not Implemented$/);
+		beforeEach(function(done) {
+			return common.clearDb(dynamo).then(function() {
+				return provider.init(dynamo);
+			}).then(function() { done(); });
+		});
+
+		var hashKeyName = 'userName';
+
+		it('Should return no items for empty table', function() {
+			return common.testListReturnsNoItemsForEmptyTable(provider);
+		});
+
+		it('Should return items', function() {
+			return common.testListShouldReturnItems(provider, hashKeyName, testData, 2);
+		});
+
+		it ('Should return items after continuation token', function() {
+			return common.testListShouldReturnItemsAfterContinuationToken(provider, hashKeyName, testData, 12);
+		});
+
+		it('Should allow skipping to key', function() {
+			return common.testListShouldAllowSkippingToKey(provider, hashKeyName, testData);
 		});
 	});
 });
