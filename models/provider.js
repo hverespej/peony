@@ -163,6 +163,14 @@ module.exports = {
 	create: function() {
 		return new Provider();
 	},
+	exists: function(userName) {
+		return _dbi.itemExists({
+			db: _db,
+			tableName: _tableName,
+			hashKeyName: _hashKeyName,
+			hashKeyVal: userName
+		});
+	},
 	list: function(options) {
 		options = options || {};
 		options.hashKeyName = _hashKeyName;

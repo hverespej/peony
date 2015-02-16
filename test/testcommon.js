@@ -110,19 +110,19 @@ function testFailToLoadNonExistantItem(model, options) {
 	).to.eventually.be.rejectedWith(/^Not Found$/);
 }
 
-function testItemExistsReturnsTrueForExistingItem(model, testData, key) {
+function testItemExistsReturnsTrueForExistingItem(model, testData, hashKey, rangeKey) {
 	var m = model.create();
 	m.set(testData);
 	return expect(
 		m.save().then(function() {
-			return model.exists(key);
+			return model.exists(hashKey, rangeKey);
 		})
 	).to.eventually.be.true;
 }
 
 function testItemExistsReturnsFalseForNonExistentItem(model) {
 	return expect(
-		model.exists('non-existent-key')
+		model.exists('non-existent-key-1', 'non-existent-key-2')
 	).to.eventually.be.false;
 }
 

@@ -65,6 +65,20 @@ describe('models/service', function() {
 			});
 		});
 
+		describe('#exists', function() {
+			after(function(done) {
+				return common.deleteStoredItem(dynamo, tableName, testData, done);
+			});
+
+			it('Should return true when item exists', function() {
+				return common.testItemExistsReturnsTrueForExistingItem(service, testData, testData.name);
+			});
+
+			it('Should return false when item does not exist', function() {
+				return common.testItemExistsReturnsFalseForNonExistentItem(service);
+			});
+		});
+
 		describe('#load', function() {
 			after(function(done) {
 				return common.deleteStoredItem(dynamo, tableName, testData, done);

@@ -84,7 +84,7 @@ describe('models/client', function() {
 				return common.testItemExistsReturnsTrueForExistingItem(client, testData, testData.userName);
 			});
 
-			it('Should return false when item does not exit', function() {
+			it('Should return false when item does not exist', function() {
 				return common.testItemExistsReturnsFalseForNonExistentItem(client);
 			});
 		});

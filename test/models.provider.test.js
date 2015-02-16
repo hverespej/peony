@@ -84,6 +84,20 @@ describe('models/provider', function() {
 			});
 		});
 
+		describe('#exists', function() {
+			after(function(done) {
+				return common.deleteStoredItem(dynamo, tableName, testData, done);
+			});
+
+			it('Should return true when item exists', function() {
+				return common.testItemExistsReturnsTrueForExistingItem(provider, testData, testData.userName);
+			});
+
+			it('Should return false when item does not exist', function() {
+				return common.testItemExistsReturnsFalseForNonExistentItem(provider);
+			});
+		});
+
 		describe('#load', function() {
 			it('Should retrieve object with expected properties', function(done) {
 				var p1 = provider.create();

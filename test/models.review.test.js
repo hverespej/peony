@@ -70,6 +70,20 @@ describe('models/review', function() {
 			});
 		});
 
+		describe('#exists', function() {
+			after(function(done) {
+				return common.deleteStoredItem(dynamo, tableName, testData, done);
+			});
+
+			it('Should return true when item exists', function() {
+				return common.testItemExistsReturnsTrueForExistingItem(review, testData, testData.subject, testData.time);
+			});
+
+			it('Should return false when item does not exist', function() {
+				return common.testItemExistsReturnsFalseForNonExistentItem(review);
+			});
+		});
+
 		describe('#load', function() {
 			after(function(done) {
 				return common.deleteStoredItem(dynamo, tableName, testData, done);

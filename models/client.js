@@ -147,12 +147,12 @@ module.exports = {
 	create: function() {
 		return new Client();
 	},
-	exists: function(userId) {
+	exists: function(userName) {
 		return _dbi.itemExists({
 			db: _db,
 			tableName: _tableName,
 			hashKeyName: _hashKeyName,
-			hashKeyVal: userId
+			hashKeyVal: userName
 		});
 	},
 	list: function(options) {

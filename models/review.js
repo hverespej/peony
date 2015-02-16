@@ -94,6 +94,16 @@ module.exports = {
 	create: function() {
 		return new Review();
 	},
+	exists: function(subject, time) {
+		return _dbi.itemExists({
+			db: _db,
+			tableName: _tableName,
+			hashKeyName: _hashKeyName,
+			hashKeyVal: subject,
+			rangeKeyName: _rangeKeyName,
+			rangeKeyVal: time
+		});
+	},
 	list: function(options) {
 		options = options || {};
 		options.hashKeyName = _hashKeyName;

@@ -9,6 +9,7 @@ var _hashKeyName = 'name';
 function Service() {
 }
 
+// TODO: Add 'category' as proproty
 Service.prototype.set = function(properties) {
 	if (typeof(properties.name) !== 'undefined') this.name = properties.name;
 	if (typeof(properties.friendlyName) !== 'undefined') this.friendlyName = properties.friendlyName;
@@ -83,6 +84,14 @@ module.exports = {
 	},
 	create: function() {
 		return new Service();
+	},
+	exists: function(name) {
+		return _dbi.itemExists({
+			db: _db,
+			tableName: _tableName,
+			hashKeyName: _hashKeyName,
+			hashKeyVal: name
+		});
 	},
 	list: function(options) {
 		options = options || {};
