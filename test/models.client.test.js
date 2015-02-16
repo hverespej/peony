@@ -75,6 +75,20 @@ describe('models/client', function() {
 			});
 		});
 
+		describe('#exists', function() {
+			after(function(done) {
+				return common.deleteStoredItem(dynamo, tableName, testData, done);
+			});
+
+			it('Should return true when item exists', function() {
+				return common.testItemExistsReturnsTrueForExistingItem(client, testData, testData.userName);
+			});
+
+			it('Should return false when item does not exit', function() {
+				return common.testItemExistsReturnsFalseForNonExistentItem(client);
+			});
+		});
+
 		describe('#load', function() {
 			it('Should retrieve object with expected properties', function(done) {
 				var c1 = client.create();

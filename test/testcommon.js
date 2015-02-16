@@ -110,6 +110,22 @@ function testFailToLoadNonExistantItem(model, options) {
 	).to.eventually.be.rejectedWith(/^Not Found$/);
 }
 
+function testItemExistsReturnsTrueForExistingItem(model, testData, key) {
+	var m = model.create();
+	m.set(testData);
+	return expect(
+		m.save().then(function() {
+			return model.exists(key);
+		})
+	).to.eventually.be.true;
+}
+
+function testItemExistsReturnsFalseForNonExistentItem(model) {
+	return expect(
+		model.exists('non-existent-key')
+	).to.eventually.be.false;
+}
+
 function testListReturnsNoItemsForEmptyTable(model) {
 	return expect(
 		model.list().then(function(result) {
@@ -201,6 +217,8 @@ module.exports = {
 	testStoreOnEtagMatch: testStoreOnEtagMatch,
 	testFailToStoreOnEtagMismatch: testFailToStoreOnEtagMismatch,
 	testFailToLoadNonExistantItem: testFailToLoadNonExistantItem,
+	testItemExistsReturnsTrueForExistingItem: testItemExistsReturnsTrueForExistingItem,
+	testItemExistsReturnsFalseForNonExistentItem: testItemExistsReturnsFalseForNonExistentItem,
 	testListReturnsNoItemsForEmptyTable: testListReturnsNoItemsForEmptyTable,
 	testListShouldReturnItems: testListShouldReturnItems,
 	testListShouldReturnItemsAfterContinuationToken: testListShouldReturnItemsAfterContinuationToken,

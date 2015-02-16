@@ -75,6 +75,36 @@ function waitForCollectionReady(options) {
 	});
 }
 
+exports.itemExists = function(options) {
+	options = options || {};
+
+	if (typeof(options.db) === 'undefined' || 
+		typeof(options.tableName) === 'undefined' || 
+		typeof(options.hashKeyName) === 'undefined' || 
+		typeof(options.hashKeyVal) === 'undefined') {
+		throw err.create(400, 'InvalidArgument', 'Must provide db, tableName, and hashKey');
+	}
+
+	var args = {
+		TableName: options.tableName,
+		Key: {},
+		ConsistentRead: true,
+		ReturnConsumedCapacity: 'NONE',
+		// Projecting non-existent column results in no data - good since we're only checking existence
+		ProjectionExpression: 'asdfprojectiondoesnotmatterasdf'
+	};
+	args.Key[options.hashKeyName] = { S: options.hashKeyVal };
+
+	if (typeof(options.rangeKeyName) !== 'undefined' &&
+		typeof(options.rangeKeyVal) !== 'undefined') {
+		args.Key[options.rangeKeyName] = { S: options.rangeKeyVal };
+	}
+
+	return options.db.getItemAsync(args).then(function(data) {
+		return typeof(data.Item) !== 'undefined';
+	});
+};
+
 exports.get = function(options) {
 	options = options || {};
 

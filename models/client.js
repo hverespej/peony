@@ -147,6 +147,14 @@ module.exports = {
 	create: function() {
 		return new Client();
 	},
+	exists: function(userId) {
+		return _dbi.itemExists({
+			db: _db,
+			tableName: _tableName,
+			hashKeyName: _hashKeyName,
+			hashKeyVal: userId
+		});
+	},
 	list: function(options) {
 		options = options || {};
 		options.hashKeyName = _hashKeyName;
